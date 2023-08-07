@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>券売機</title>
+    <style>
+        /* CSSスタイルを定義 */
+        .ticketMachineContainer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        /*
+        #update-button {
+
+        }
+        */
+        .button-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .ticketMachine {
+            width: 300px;
+            /* 横幅を大きくする */
+            height: 200px;
+            background-color: #00BFFF;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .column {
+            width: 60px;
+            height: 280px;
+            /* 高さを少し短くする */
+            background-color: purple;
+            margin: 0 10px;
+        }
+
+        .tile {
+            width: 50px;
+            height: 50px;
+            background-color: purple;
+            margin: 5px;
+            display: block;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ticketMachineContainer">
+        <div class="ticketMachine">券売機</div>
+    </div>
+    <div class="container">
+        <div class="column">
+            <!-- 列1 -->
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+        </div>
+        <div class="column">
+            <!-- 列2 -->
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+        </div>
+        <div class="column">
+            <!-- 列3 -->
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+        </div>
+    </div>
+    <!--
+
+    <label for="inputNum">与えられた数を入力：</label>
+    <input type="number" id="inputNum" onchange="handleInput()" />
+    -->
+    
+    <div class="button-box">
+        <button id="update-button" onclick="setDetectedPeopleNumber()">更新</button>
+    </div>
+    <script>
+        window.onload = setDetectedPeopleNumber;
+
+        async function setDetectedPeopleNumber() {
+            const URL = "http://127.0.0.1:5000/api/current_people_count";
+            const res = await fetch(URL);
+            const jsonData = await res.json();
+            console.log(jsonData);
+            colorTiles(jsonData.count);
+        }
+        // JavaScriptでタイルを着色する関数
+        function colorTiles(num) {
+            const columns = document.querySelectorAll(".column .tile");
+            columns.forEach((tile, index) => {
+                if (index < num) {
+                    tile.classList.add("red");
+                } else {
+                    tile.classList.remove("red");
+                }
+            });
+        }
+        // ページの読み込みが完了したら初期化
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     colorTiles(0); // 初期状態は全て紫色のまま
+        // });
+        
+    </script>
+</body>
+
+</html>
