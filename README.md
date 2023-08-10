@@ -2,6 +2,15 @@
 
 # KITの学食の食券機前の混雑をなくすためにつくったシステム(Hackit)
 
+# アプローチ
+
+1. カメラから画像を入手
+1. 画像から人間を検出
+1. 人数を測定して
+1. webに混雑状況を表示
+
+> 2と4は凝ったよね。
+
 ## フォルダの説明
 - camera  
     - ここにはデモ用に5秒ごとにwebカメラから画像を取得して'data/dest/image.jpg'に保存するプログラムが入っている
@@ -19,11 +28,3 @@
         とすれば、localhostでサーバーが起動する.
 - html
     - index.htmlがlocalhostのルート'/'におかれるhtmlファイル.
-
-## 使い方
-
-- data/yoloFilesへ
-    - coco.names
-    - yolov3.cfg
-    - yolov3.weights
-    を配置するhuman detection
