@@ -28,3 +28,8 @@
         とすれば、localhostでサーバーが起動する.
 - html
     - index.htmlがlocalhostのルート'/'におかれるhtmlファイル.
+
+
+## 今後
+- このリポジトリはアーカイブということで私は放置します。
+得られたアイデアから想定されるものはなかなか需要があるみたいなので、[clowdWatch-Mk2](https://github.com/yoshiyuki-140/clowdWatch-Mk2) で作るつもりです。
